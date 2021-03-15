@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        img {
+            width: 80%;
+        }
+        button {
+            margin-top: 50px;
+            height: 60px;
+            width: 110px;
+            font-size: 20px;
+            border-radius: 50px;
+            background-color: white;
+        }
+        #output {
+            margin-top: 30px;
+        }
+        .number {
+            border-right: 0px;
+            border-top: 0px;
+            width: 45px;
+            font-size: 40px;
+            text-align: center;
+            border: 1px solid red;
+            border-radius: 30px;
+            padding: 4px;
+            margin-top: 25px;
+        }
+        .numberAll {
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>
+        [ 로또번호 생성기 ]
+    </h1>
+
+    <img src="main.png">
+
+    <button onclick="GetLotto()">번호생성</button>
+
+    <h2 id="output">로또번호 출력</h2>
+
+    <div class="numberAll">
+        <input class="number" id="number1" value="" readonly>
+        <input class="number" id="number2" value="" readonly>
+        <input class="number" id="number3" value="" readonly>
+        <input class="number" id="number4" value="" readonly>
+        <input class="number" id="number5" value="" readonly>
+        <input class="number" id="number6" value="" readonly>
+    </div>
+    <script type="text/javascript">
+        function GetLotto()
+        {
+          // 6개의 로또 번호를 저장할 배열
+            var lotto = new Array(6);
+           // 추첨된 로또번호의 갯수
+            var count = 0;
+          // 번호중복 방지용 변수
+            var mFlag = true;
+            // 6개의 로또번호를 얻을때까지 반복
+            while(count < 6)
+            {
+               var number;
+               // 랜덤번호 추출
+               number = parseInt(Math.random()*45)+1
+               // 중복확인
+               for(var i=0; i<count; i++)
+                  if(lotto[i] == number) mFlag = false;
+               // 중복된 번호가 아니면 로또 번호배열에 추가
+               if(mFlag)
+               {
+                    lotto[count] = number;
+                    count++;
+               }
+               mFlag = true;
+               
+           }
+
+           lotto.sort(function(a, b) { // 오름차순
+             return a - b;
+        });
+
+        alert("번호가 생성되었습니다 !");
+        
+        // 추첨된 로또번호 출력
+        $('#number1').val(lotto[0]);
+        $('#number2').val(lotto[1]);
+        $('#number3').val(lotto[2]);
+        $('#number4').val(lotto[3]);
+        $('#number5').val(lotto[4]);
+        $('#number6').val(lotto[5]);
+        
+        }
+    
+    </script>
+</body>
+</html>
