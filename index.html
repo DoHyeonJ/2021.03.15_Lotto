@@ -1,38 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5VP17SF7Z"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-C5VP17SF7Z');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5VP17SF7Z"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-C5VP17SF7Z');
+    </script>
     <title>Document</title>
     <style>
         body {
             text-align: center;
         }
+        
         img {
             width: 340px;
+            display: block;
+            margin: 0 auto;
         }
+        
         button {
             height: 60px;
             width: 110px;
             font-size: 15px;
             border-radius: 50px;
             background-color: white;
-            display: block;
-            margin: 25px auto;
+            /* display: block; */
+            margin: 15px auto;
         }
+        
         #output {
             margin-top: 30px;
         }
+        
         .number {
             border-right: 0px;
             border-top: 0px;
@@ -43,77 +53,80 @@
             border-radius: 30px;
             padding: 4px;
             margin-top: 25px;
+            margin-left: 5px;
         }
+        
         .numberAll {
             display: inline;
         }
+        
+        .btn_group {
+            display: block;
+        }
     </style>
 </head>
-<body>
-    
-<!--     <h1>
-        [ 로또번호 생성기 ]
-    </h1> -->
 
+<body>
+
+    <!-- 메인로고 -->
     <img src="main.png">
 
-    <button onclick="GetLotto()">번호생성</button>
-
-    <h2 id="output">로또번호 출력</h2>
-
-    <div class="numberAll">
-        <input class="number" id="number1" value="" readonly>
-        <input class="number" id="number2" value="" readonly>
-        <input class="number" id="number3" value="" readonly>
-        <input class="number" id="number4" value="" readonly>
-        <input class="number" id="number5" value="" readonly>
-        <input class="number" id="number6" value="" readonly>
+    <div class="btn_group">
+        <button onclick="GetLottoCnt(1)">1줄 출력</button>
+        <button onclick="GetLottoCnt(5)">5줄 출력</button>
     </div>
+    <!-- 번호출력 박스 -->
+    <div class="numberAll">
+
+    </div>
+
+    <!-- 카피라이트 -->
     <h4>Copyright 2021.Dohyeonj.All rights reserved.</h4>
+
     <script type="text/javascript">
-        function GetLotto()
-        {
-          // 6개의 로또 번호를 저장할 배열
+        function GetLottoCnt(cnt) {
+            $('.number').remove();
+            $('br').remove();
+            while (cnt > 0) {
+                GetLotto();
+                cnt--;
+            }
+            alert("번호가 생성되었습니다 !");
+        }
+
+
+        function GetLotto() {
+
             var lotto = new Array(6);
-           // 추첨된 로또번호의 갯수
             var count = 0;
-          // 번호중복 방지용 변수
             var mFlag = true;
-            // 6개의 로또번호를 얻을때까지 반복
-            while(count < 6)
-            {
-               var number;
-               // 랜덤번호 추출
-               number = parseInt(Math.random()*45)+1
-               // 중복확인
-               for(var i=0; i<count; i++)
-                  if(lotto[i] == number) mFlag = false;
-               // 중복된 번호가 아니면 로또 번호배열에 추가
-               if(mFlag)
-               {
+
+            while (count < 6) {
+                var number;
+                number = parseInt(Math.random() * 45) + 1
+                for (var i = 0; i < count; i++)
+                    if (lotto[i] == number) mFlag = false;
+                if (mFlag) {
                     lotto[count] = number;
                     count++;
-               }
-               mFlag = true;
-               
-           }
+                }
+                mFlag = true;
+            }
 
-           lotto.sort(function(a, b) { // 오름차순
-             return a - b;
-        });
+            //오름차순
+            lotto.sort(function(a, b) {
+                return a - b;
+            });
 
-        alert("번호가 생성되었습니다 !");
-        
-        // 추첨된 로또번호 출력
-        $('#number1').val(lotto[0]);
-        $('#number2').val(lotto[1]);
-        $('#number3').val(lotto[2]);
-        $('#number4').val(lotto[3]);
-        $('#number5').val(lotto[4]);
-        $('#number6').val(lotto[5]);
-        
+            //로또번호 태그 추가
+            for (var i = 0; i < 6; i++) {
+                $('.numberAll').append('<input class="number" id="number1" value="' + lotto[i] + '" readonly>');
+                if (i == 5) {
+                    $('.numberAll').append('<br>');
+                }
+            }
         }
-    
     </script>
 </body>
+
 </html>
