@@ -125,6 +125,7 @@
             alert("번호가 생성되었습니다 !");
         }
 
+        //번호에 고유 색 넣어주기위한 idx 변수
         var colorCnt = 0;
 
         function GetLotto() {
@@ -159,6 +160,7 @@
                 $('.numberAll').append('<input class="number" id="' + colorCnt + '" value="' + lottoNum + '" readonly>');
 
 
+                //번호에 따른 고유 색 
                 if (lottoNum > 0 && lottoNum < 10) {
                     $('#' + colorCnt + '').addClass("one");
                 }
