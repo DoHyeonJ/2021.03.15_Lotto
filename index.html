@@ -30,13 +30,14 @@
         }
         
         button {
-            height: 60px;
-            width: 110px;
+            height: 55px;
+            width: 90px;
             font-size: 15px;
             border-radius: 50px;
-            background-color: white;
-            /* display: block; */
+            background-color: aquamarine;
             margin: 15px auto;
+            border: none;
+            color: black;
         }
         
         #output {
@@ -49,11 +50,12 @@
             width: 45px;
             font-size: 40px;
             text-align: center;
-            border: 1px solid red;
+            border: none;
             border-radius: 30px;
             padding: 4px;
-            margin-top: 25px;
+            margin-top: -8px;
             margin-left: 3px;
+            color: white;
         }
         
         .numberAll {
@@ -62,6 +64,31 @@
         
         .btn_group {
             display: block;
+        }
+        
+        .numberLine {
+            border: 1px solid gainsboro;
+            margin-top: 5px;
+        }
+        
+        .one {
+            background-color: #FCC43D;
+        }
+        
+        .two {
+            background-color: #8CC5E7;
+        }
+        
+        .three {
+            background-color: #F18D80;
+        }
+        
+        .four {
+            background-color: #A7A2DE;
+        }
+        
+        .five {
+            background-color: #6BCE9E;
         }
     </style>
 </head>
@@ -72,8 +99,8 @@
     <img src="main.png">
 
     <div class="btn_group">
-        <button onclick="GetLottoCnt(1)">1줄 출력</button>
-        <button onclick="GetLottoCnt(5)">5줄 출력</button>
+        <button onclick="GetLottoCnt(1)">한 줄</button>
+        <button onclick="GetLottoCnt(5)">다섯 줄</button>
     </div>
     <!-- 번호출력 박스 -->
     <div class="numberAll">
@@ -87,6 +114,7 @@
         function GetLottoCnt(cnt) {
             $('.number').remove();
             $('br').remove();
+            $('.numberLine').remove();
             while (cnt > 0) {
                 GetLotto();
                 cnt--;
@@ -94,6 +122,7 @@
             alert("번호가 생성되었습니다 !");
         }
 
+        var colorCnt = 0;
 
         function GetLotto() {
 
@@ -118,12 +147,36 @@
                 return a - b;
             });
 
+
+
             //로또번호 태그 추가
             for (var i = 0; i < 6; i++) {
-                $('.numberAll').append('<input class="number" id="number1" value="' + lotto[i] + '" readonly>');
-                if (i == 5) {
-                    $('.numberAll').append('<br>');
+                var lottoNum = lotto[i];
+
+                $('.numberAll').append('<input class="number" id="' + colorCnt + '" value="' + lottoNum + '" readonly>');
+
+
+                if (lottoNum > 0 && lottoNum < 11) {
+                    $('#' + colorCnt + '').addClass("one");
                 }
+                if (lottoNum > 10 && lottoNum < 21) {
+                    $('#' + colorCnt + '').addClass("two");
+                }
+                if (lottoNum > 20 && lottoNum < 31) {
+                    $('#' + colorCnt + '').addClass("three");
+                }
+                if (lottoNum > 30 && lottoNum < 41) {
+                    $('#' + colorCnt + '').addClass("four");
+                }
+                if (lottoNum > 40) {
+                    $('#' + colorCnt + '').addClass("five");
+                }
+
+                if (i == 5) {
+                    $('.numberAll').append('<div class="numberLine"></div><br>');
+                }
+
+                colorCnt++;
             }
         }
     </script>
