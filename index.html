@@ -156,19 +156,19 @@
                 $('.numberAll').append('<input class="number" id="' + colorCnt + '" value="' + lottoNum + '" readonly>');
 
 
-                if (lottoNum > 0 && lottoNum < 11) {
+                if (lottoNum > 0 && lottoNum < 10) {
                     $('#' + colorCnt + '').addClass("one");
                 }
-                if (lottoNum > 10 && lottoNum < 21) {
+                if (lottoNum >= 10 && lottoNum < 20) {
                     $('#' + colorCnt + '').addClass("two");
                 }
-                if (lottoNum > 20 && lottoNum < 31) {
+                if (lottoNum >= 20 && lottoNum < 30) {
                     $('#' + colorCnt + '').addClass("three");
                 }
-                if (lottoNum > 30 && lottoNum < 41) {
+                if (lottoNum >= 30 && lottoNum < 40) {
                     $('#' + colorCnt + '').addClass("four");
                 }
-                if (lottoNum > 40) {
+                if (lottoNum >= 40) {
                     $('#' + colorCnt + '').addClass("five");
                 }
 
