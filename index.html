@@ -28,9 +28,9 @@
     <img src="main.png">
 
     <div class="btn_group">
-        <button onclick="GetLottoCnt(1)">한줄뽑기</button>
-        <button onclick="GetLottoCnt(5)">다섯줄뽑기</button>
-        <button onclick="location.href='winning_number.html'" style="font-size: 13px;">지난당첨번호</button>
+        <button onclick="GetLottoCnt(1);">한줄뽑기</button>
+        <button onclick="GetLottoCnt(5);">다섯줄뽑기</button>
+        <button onclick="winning_number();" style="font-size: 13px;">지난당첨번호</button>
     </div>
 
     <!-- 번호출력 박스 -->
@@ -111,6 +111,12 @@
 
                 colorCnt++;
             }
+        }
+
+        function winning_number() {
+            alert("현재 개발중인 기능입니다.");
+            
+            // location.href="winning_number.html";
         }
     </script>
 </body>

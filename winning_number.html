@@ -11,18 +11,21 @@
 
 <body>
     <img src="main.png">
-    <!-- <div class="winning_number">
-        <p>지난당첨번호</p>
-    </div> -->
-
-    <div class="numberLine"></div>
 
     <p>조회할 회차를 선택하여 주세요</p>
     <input id="search_num" type="text" placeholder="ex ) 440">
     <button onclick="search()">조회</button>
 
-    <script type="text/javascript">
-        function search() {}
+
+    <script>
+    $.ajax({
+      dataType : 'jsonp',
+      jsonpCallback: "callback",
+      url: "https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=861",
+      success: function(data) {
+        console.log(data);
+      }
+    });
     </script>
 
 
