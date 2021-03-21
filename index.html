@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5VP17SF7Z"></script>
@@ -18,82 +19,7 @@
         gtag('config', 'G-C5VP17SF7Z');
     </script>
     <title>Document</title>
-    <style>
-        body {
-            text-align: center;
-        }
-        
-        img {
-            width: 340px;
-            display: block;
-            margin: 0 auto;
-        }
-        
-        button {
-            height: 55px;
-            width: 90px;
-            font-size: 15px;
-            border-radius: 50px;
-            background-color: aliceblue;
-            margin: 15px auto;
-            border: none;
-            color: black;
-        }
-        
-        #output {
-            margin-top: 30px;
-        }
-        
-        .number {
-            border-right: 0px;
-            border-top: 0px;
-            width: 45px;
-            font-size: 40px;
-            text-align: center;
-            border: none;
-            border-radius: 30px;
-            padding: 4px;
-            margin-top: -8px;
-            margin-left: 3px;
-            color: white;
-            margin-bottom: 3px;
-        }
-        
-        .numberAll {
-            display: inline;
-        }
-        
-        .btn_group {
-            display: block;
-        }
-        
-        .numberLine {
-            border: 1px dashed gainsboro;
-            margin-top: 5px;
-            margin: 0 auto;
-            width: 350px;
-        }
-        
-        .one {
-            background-color: #FCC43D;
-        }
-        
-        .two {
-            background-color: #8CC5E7;
-        }
-        
-        .three {
-            background-color: #F18D80;
-        }
-        
-        .four {
-            background-color: #A7A2DE;
-        }
-        
-        .five {
-            background-color: #6BCE9E;
-        }
-    </style>
+
 </head>
 
 <body>
@@ -102,9 +28,11 @@
     <img src="main.png">
 
     <div class="btn_group">
-        <button onclick="GetLottoCnt(1)">한 줄</button>
-        <button onclick="GetLottoCnt(5)">다섯 줄</button>
+        <button onclick="GetLottoCnt(1)">한줄뽑기</button>
+        <button onclick="GetLottoCnt(5)">다섯줄뽑기</button>
+        <button onclick="location.href='winning_number.html'" style="font-size: 13px;">지난당첨번호</button>
     </div>
+
     <!-- 번호출력 박스 -->
     <div class="numberAll">
 
